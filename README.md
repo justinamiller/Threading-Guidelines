@@ -1,6 +1,6 @@
 # Threading Guildlines for C#
 
-*      1. What is a mutex?
+##     1. What is a mutex?
          *      A mutex object is a synchronization object whose state is set to signaled when it is not owned by any thread, 
          *      and nonsignaled when it is owned. Only one thread at a time can own a mutex object, whose name comes from the 
          *      fact that it is useful in coordinating mutually exclusive access to a shared resource. For example, to prevent 
@@ -17,7 +17,7 @@
          *      Of course mutex also has additional properties such as timeout where all methods trying to access it can be diverted
          *      elswhere in case enouph time has passed an so on.
          *      
-         *      2.What is a semaphore?
+## 2.What is a semaphore?
          *      A semaphore for all purposes is almost the same thing as a mutex just that it restricts access using a counter
          *      determining the amount of threads that can pass it at a time (access its restricted content). 
          *      In other words, if a semaphore is started at zero and is given a max of three, at most three threads will be able
@@ -37,7 +37,7 @@
          *      
          *      In windows a binary semaphore is very similare to an event.
          *         
-         *      3.What is a critical section?
+##  3.What is a critical section?
          *      A critical section is an area of code that's access must be limited in a multithreaded enviroment since concurrent
          *      access to the area might cause issues. In other words - the critical section is a delicate area of code that
          *      requires mutual exclusion or the codes outcome might do things you dont want it to do.
@@ -71,8 +71,7 @@
          *      in the case of contention - Uncontended acquires, which should be the common case, are incredibly fast. In the case
          *      of contention, they enter the kernel to wait on some synchronization primitive (like an event or semaphore).
          *      
-         *      4.TPL
-         *      Task Parallel Library
+##    4.TPL - Task Parallel Library
          *          4.a.What are tasks?
          *          Tasks are .NET managed threads. 
          *          The Task class represents a single operation that does not return a value and that usually executes 
@@ -112,7 +111,7 @@
          *          The main reason Tasks implement IDisposable is because the contain IDisposable recourses and according to the
          *          .net framework guildlines this meens its better to also implement this in the parent.
          *          
-         *      5.Threads
+##      5.Threads
          *          5.a.Whats are threads?
          *          
          *          C# supports parallel execution of code through multithreading. A thread is an independent execution path, able
@@ -231,35 +230,4 @@
          *                  the async leaves, the result is requested and locks the thread, when the async returns it tries to enter
          *                  the thread but its locked since the result is waiting for an answer... which is the async, so in fact
          *                  the async will never be able to enter and the result will never open the lock resulting in a deadlock.
-         *                  
-         *                  
-         *                  
-         *          
-         *            
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
+         *                  /
