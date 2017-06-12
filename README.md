@@ -1,4 +1,4 @@
-# Threading Guildlines for C#
+# Threading Guidelines for C#
 
 ##     1. What is a mutex?
                A mutex object is a synchronization object whose state is set to signaled when it is not owned by any thread, 
