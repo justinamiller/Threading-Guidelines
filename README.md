@@ -24,7 +24,7 @@
                to enter its restricted area at any given time (each thread that exits the semaphore will release its hold and
                allow a new thread to enter).
                
-               2.. What is the difference between mutex and semaphore?
+### 2.. What is the difference between mutex and semaphore?
                In this case the difference is simple, a semaphore can provide and dissallow access based on more than one thread - 
                as in, it has a counter where mutex can work with one thread owning it at a time.
                BUT - another question that can be asked is what is the difference between a mutex and a binary semaphore?
@@ -64,7 +64,7 @@
                Best practice is to define a private object to lock on, or a private static object variable to protect data common 
                to all instances.
           
-               3..What is the difference between a critical section and a mutex?
+### 3..What is the difference between a critical section and a mutex?
                For Windows, critical sections are lighter-weight than mutexes.
                Mutexes can be shared between processes, but always result in a system call to the kernel which has some overhead.
                Critical sections can only be used within one process, but have the advantage that they only switch to kernel mode
@@ -72,7 +72,7 @@
                of contention, they enter the kernel to wait on some synchronization primitive (like an event or semaphore).
                
 ##    4. TPL - Task Parallel Library
-                   4.a.What are tasks?
+###   4.a.What are tasks?
                    Tasks are .NET managed threads. 
                    The Task class represents a single operation that does not return a value and that usually executes 
                    asynchronously.
@@ -80,7 +80,7 @@
                    as wait that provides the capability to wait for another task to complete, waiting for an amount of time, 
                    synchronization and so forth, many of the threads methods are translated in practice to the task form.
                    
-                   4.b.What is the difference between tasks and threads?
+###   4.b.What is the difference between tasks and threads?
                    Tasks are more efficient and more scalable use of system resources.
                    Behind the scenes, tasks are queued to the ThreadPool, which has been enhanced with algorithms that 
                    determine and adjust to the number of threads and that provide load balancing to maximize throughput. 
@@ -104,7 +104,7 @@
                    The only reasons to explicitly create your own Threads in modern code are setting per-thread options, or 
                    maintaining a persistent thread that needs to maintain its own identity.
          
-                   4.c.Tasks implement IDisposable, do you need to dispose of tasks?
+###     4.c.Tasks implement IDisposable, do you need to dispose of tasks?
                    The short answer is -No.
                    The longer answer is not unless you are having performace standards that you need to meet and are makeing
                    1000000% sure that the tasks are no longer in use when you are disposing of them.
@@ -112,7 +112,7 @@
                    .net framework guildlines this meens its better to also implement this in the parent.
                    
 ##      5. Threads
-                   5.a.Whats are threads?
+###   5.a.Whats are threads?
                    
                    C# supports parallel execution of code through multithreading. A thread is an independent execution path, able
                    to run simultaneously with other threads.
@@ -124,7 +124,7 @@
                    memory for its stack, and adds additional CPU overhead as the processor context-switch between threads. 
                    Instead, it is better to have a small pool of threads execute your code as work becomes available.
                    
-                   5.b.What are issues that may occure with threads?     
+###    5.b.What are issues that may occure with threads?     
                    
                    Improved performance and concurrency
                        For certain applications, performance and concurrency can be improved by using multithreading and 
@@ -163,7 +163,7 @@
                        Because the completed port must be tested and re-tested, the work required to port a multithreaded and/or 
                        multicontexted application is substantial.                   
                    
-                   5.c.What are threads good for? What are they used for?
+###         5.c.What are threads good for? What are they used for?
                    
                    Improved performance and concurrency
                        For certain applications, performance and concurrency can be improved by using multithreading and 
@@ -182,7 +182,7 @@
                        This capability for multiple dispatched threads is especially useful for conversational servers, which 
                        otherwise must be dedicated to one client for the entire duration of a conversation.
                    
-                   5.d.What is a threadpool?
+###          5.d.What is a threadpool?
                    
                    ThreadPool is a wrapper around a pool of threads maintained by the CLR. ThreadPool gives you no control at all;
                    you can submit work to execute at some point, and you can control the size of the pool, but you can’t set 
@@ -195,19 +195,19 @@
                    operations where the caller does not need the result.
                    
 ## 6. What are some good to know issues you might encounter when using threads\tasks?
-                       6..Deadlock:
+###              6..Deadlock:
                            Deadlocks are when two threads\ tasks lock a section\s while remaining dependant in a way that neither
                            can unlock and neither can continue their function such that they both remain in a constant state where
                            they freeze waiting for the other. Deadlock in short freez the system (in the threads scope and whatever
                            is dependant on it)
                            
-                       6..Starvation:
+###                6..Starvation:
                            Starvation is a situation where the time threads get on tasks it not managed properly and the result is
                            that a thread (or a group that does not include all the threads) hogs up all the cpu and "starves" a
                            thread, a group of threads or all threads except one. In this case certain actions will not go through
                            since they never get cpu time.
                        
-                       6..the for issue
+###                    6..the for issue
                            for(int i = 0; i < 10; i++){
                                doSomething(i);
                            }
@@ -220,7 +220,7 @@
                            i = j
                            therefore the threads can cause issues inside of the i++ itself and stop anywhere in the sub implementation.
                            
-                        6..The tasks result async issue.
+###                    6..The tasks result async issue.
                            When working with tasks there are two methods that might cause issue if invoked with dependancy:
                            task t = async task.run;
                            v = t.result;
