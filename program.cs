@@ -1,0 +1,4 @@
+class program
+{
+   public program()  {}
+}
